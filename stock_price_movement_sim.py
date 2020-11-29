@@ -7,12 +7,12 @@ from scipy.stats import norm
 
 def check(date):
   if len(date) != 10 or date[4] != '-' or date[7] != '-':
-    print("Invalid input.")
+    print("Wrong format.")
     return True
   else:
-    for i in range(1, 10):
+    for i in range(1, 11):
       if i != 5 and i != 8 and (ord(date[i-1])-48 < 0 or ord(date[i-1])-48 > 9):
-        print("Invalid input.")
+        print("Wrong format.")
         return True
     return False
 
@@ -20,14 +20,18 @@ corpName = raw_input("Insert corporation name: ")
 stockSymbol = raw_input("Insert stock symbol: ")
 helperVar = True
 while helperVar:
-  date1 = raw_input("Insert first day (format: 'YYYY-MM-DD'): ")
+  date1 = raw_input("Insert first day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
   helperVar = check(date1)
 helperVar = True
 while helperVar:
-  date2 = raw_input("Insert final day (format: 'YYYY-MM-DD'): ")
+  date2 = raw_input("Insert final day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
   helperVar = check(date2)
+  if not helperVar:
+    days = (datetime.datetime.strptime(date2, "%Y-%m-%d").date() - datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days + 1
+    if days-1 <= 0:
+      print("The date you inserted is not later than "+date1+".")
+      helperVar = True
 simulations = input("Insert number of simulations: ")
-days = (datetime.datetime.strptime(date2,"%Y-%m-%d").date()-datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days+1
 stockData = pandas.DataFrame()
 stockData[stockSymbol] = data.DataReader(stockSymbol,"yahoo",date1)['Adj Close']
 periodicDailyReturn = numpy.log(stockData.pct_change()+1)
