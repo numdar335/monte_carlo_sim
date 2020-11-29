@@ -5,7 +5,7 @@ import pandas
 from pandas_datareader import data
 from scipy.stats import norm
 
-def check(date):
+def formatCheck(date):
   if len(date) != 10 or date[4] != '-' or date[7] != '-':
     print("Wrong format.")
     return True
@@ -21,11 +21,11 @@ stockSymbol = raw_input("Insert stock symbol: ")
 helperVar = True
 while helperVar:
   date1 = raw_input("Insert first day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
-  helperVar = check(date1)
+  helperVar = formatCheck(date1)
 helperVar = True
 while helperVar:
   date2 = raw_input("Insert final day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
-  helperVar = check(date2)
+  helperVar = formatCheck(date2)
   if not helperVar:
     days = (datetime.datetime.strptime(date2, "%Y-%m-%d").date() - datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days + 1
     if days-1 <= 0:
