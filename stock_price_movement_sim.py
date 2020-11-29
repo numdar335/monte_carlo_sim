@@ -38,7 +38,7 @@ prices = numpy.zeros_like(helper)
 prices[0] = stockData.iloc[-1]
 for i in range(2,days+1): prices[i-1] = prices[i-2]*helper[i-1]
 matplotlib.pyplot.figure(figsize=(18,9))
-matplotlib.pyplot.title("%i "%simulations+"possible movements of %s's "%corpName+"stock prices after %s "%date1+"(assuming that the Efficient Market Hypothesis holds)")
+matplotlib.pyplot.title("%i "%simulations+"possible movements of %s's "%corpName+"stock prices after %s "%date1+"(assuming that the efficient market hypothesis holds)")
 matplotlib.pyplot.xlabel("Days")
 matplotlib.pyplot.ylabel("Price (currency depends on stock exchange)")
 matplotlib.pyplot.plot(prices)
