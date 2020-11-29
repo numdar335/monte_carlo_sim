@@ -10,4 +10,4 @@ So far, the only gambling strategies available for simulation are the <ins>Marti
 
 ## Stock Price Movement Simulator
 
-This simulator is a lot simpler than the previous one, and also a lot easier for me to implement, since I basically just followed [this article](https://www.investopedia.com/terms/m/montecarlosimulation.asp).
+This simulator is a lot simpler than the previous one, and it was also a lot easier for me to implement, since I basically just followed [this article](https://www.investopedia.com/terms/m/montecarlosimulation.asp).
