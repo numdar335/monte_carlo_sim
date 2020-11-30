@@ -27,7 +27,7 @@ while helperVar:
   date2 = raw_input("Insert final day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
   helperVar = formatCheck(date2)
   if not helperVar:
-    days = (datetime.datetime.strptime(date2, "%Y-%m-%d").date() - datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days + 1
+    days = (datetime.datetime.strptime(date2,"%Y-%m-%d").date()-datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days + 1
     if days-1 <= 0:
       print("The date you inserted is not later than "+date1+".")
       helperVar = True
