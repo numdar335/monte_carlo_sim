@@ -8,29 +8,29 @@ from scipy.stats import norm
 def formatCheck(date):
   if len(date) != 10 or date[4] != '-' or date[7] != '-':
     print("Wrong format.")
-    return True
+    return False
   else:
     for i in range(1, 11):
       if i != 5 and i != 8 and (ord(date[i-1])-48 < 0 or ord(date[i-1])-48 > 9):
         print("Wrong format.")
-        return True
-    return False
+        return False
+    return True
 
 corpName = raw_input("Insert corporation name: ")
 stockSymbol = raw_input("Insert stock symbol: ")
-helperVar = True
-while helperVar:
+helperVar = False
+while not helperVar:
   date1 = raw_input("Insert first day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
   helperVar = formatCheck(date1)
-helperVar = True
-while helperVar:
+helperVar = False
+while not helperVar:
   date2 = raw_input("Insert final day (make sure that the date is valid). Format: 'YYYY-MM-DD': ")
   helperVar = formatCheck(date2)
-  if not helperVar:
-    days = (datetime.datetime.strptime(date2,"%Y-%m-%d").date()-datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days + 1
+  if helperVar:
+    days = (datetime.datetime.strptime(date2, "%Y-%m-%d").date()-datetime.datetime.strptime(date1,"%Y-%m-%d").date()).days+1
     if days-1 <= 0:
       print("The date you inserted is not later than "+date1+".")
-      helperVar = True
+      helperVar = False
 simulations = input("Insert number of simulations: ")
 stockData = pandas.DataFrame()
 stockData[stockSymbol] = data.DataReader(stockSymbol,"yahoo",date1)['Adj Close']
