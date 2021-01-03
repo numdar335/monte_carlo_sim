@@ -10,7 +10,7 @@ def martingale(initBankroll,initBet):
     y.append(bankroll)
     if not randint(0,36)%2:
       bankroll -= currBet
-      currBet = 2*currBet
+      currBet *= 2
     else:
       bankroll += currBet
       currBet = initBet
