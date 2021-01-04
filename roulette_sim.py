@@ -76,7 +76,7 @@ while True:
   if initBet > initBankroll: print("Invalid input (your initial bet can't be larger than your initial bankroll).")
   elif initBet <= 0: print("Invalid input (your initial bet needs to be greater than zero).")
   else: break
-print("Choose at least one gambling strategy out of the following (input examples: '1', '12', '412', '2431'):\n1. Martingale\n2. d'Alembert\n3. Pluscoup\n4. Kelly")
+print("Choose at least one betting strategy out of the following (input examples: '1', '12', '412', '2431'):\n1. Martingale\n2. d'Alembert\n3. Pluscoup\n4. Kelly")
 checkVar = False
 while not checkVar:
   checkVar = True
